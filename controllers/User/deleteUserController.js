@@ -15,3 +15,5 @@ async function deleteUser(req, res) {
     return res.status(500).json({ error: "internal server error" });
   }
 }
+
+module.exports = { deleteUser };
