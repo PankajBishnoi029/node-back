@@ -7,6 +7,7 @@ const {
   allUsers,
   deleteUser,
   updateUser,
+  searchUser,
 } = require("../controllers/User/index.js");
 
 // end ponits
@@ -16,5 +17,6 @@ userRoutes.get("/oneUser/:id", oneUser);
 userRoutes.get("/allUsers", allUsers); // Fetch all users
 userRoutes.delete("/deleteUser/:id", deleteUser); // Delete a user by ID
 userRoutes.put("/updateUser/:id", updateUser);
+userRoutes.get("/searchUser", searchUser);
 
 module.exports = userRoutes;

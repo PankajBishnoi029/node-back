@@ -2,8 +2,8 @@ const User = require("../../models/userModels.js");
 
 async function oneUser(req, res, next) {
   try {
-    const id = req.params.id;
-    const user = await User.findById(id);
+    const _id = req.params._id;
+    const user = await User.findById(_id);
     if (!user) {
       return res.status(400).json({ message: "users is not found" });
     }
