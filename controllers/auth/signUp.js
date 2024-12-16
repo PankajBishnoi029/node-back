@@ -2,8 +2,8 @@ const User = require("../../models/userModels.js");
 
 async function createAccount(req, res) {
   try {
-    const { name, email, password } = req.body;
-    if (!name || !email || !password) {
+    const { name, email, password, role } = req.body;
+    if (!name || !email || !password || !role) {
       return res.status(400).json({ message: "all fields are required" });
     }
     const existingUser = await User.findOne({ email });
@@ -14,6 +14,7 @@ async function createAccount(req, res) {
       name,
       email,
       password,
+      role,
     });
     await saveUser.save();
     console.log(saveUser);

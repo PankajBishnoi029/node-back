@@ -5,7 +5,7 @@ dotenv.config();
 const jwt = require("jsonwebtoken");
 async function loginup(req, res) {
   try {
-    const { email, password } = req.body;
+    const { email, password, role } = req.body;
     const user = await User.findOne({ email });
     if (!user) {
       return res.status(400).json({ message: "user does not exist" });
@@ -18,6 +18,7 @@ async function loginup(req, res) {
       {
         _id: user._id,
         email: user.email,
+        role: user.role,
       },
       process.env.secret_key,
       { expiresIn: "5d" }

@@ -14,6 +14,11 @@ const UserSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
+  role: {
+    type: String,
+    enum: ["hr", "teacher", "admin"],
+    require: true,
+  },
 });
 // pre defined hooks
 
