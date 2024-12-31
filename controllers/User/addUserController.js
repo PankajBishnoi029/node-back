@@ -6,7 +6,10 @@ async function addUser(req, res) {
     if (!name || !email || !password) {
       return res.status(400).json({ message: "all fields are required" });
     }
-
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ message: "Email already exists" });
+    }
     const saveUser = await new User({
       name,
       email,
