@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 const cors = require("cors");
 const morgan = require("morgan");
+const path = require("path");
 const ConnectDb = require("./Db/Connect.js");
 const routes = require("./Routes/index.js");
 
@@ -11,6 +12,7 @@ app.use(express.json());
 app.use(cors());
 app.use(morgan("dev"));
 app.use("/api/v1", routes);
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // database
 ConnectDb();

@@ -32,6 +32,15 @@ async function uploadimage(req, res) {
     } catch (error) {
       console.log(error);
       return res.status(500).json({ error: "image is not  deleted" });
+    } finally {
+      try {
+        const image = req.file;
+        const imagePath = image.path;
+        fs.unlinkSync(imagePath);
+        console.log("image is deleted successfully");
+      } catch (error) {
+        console.log("image is not delted ");
+      }
     }
   }
 }
